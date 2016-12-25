@@ -1,7 +1,7 @@
 from bottle import Bottle, template, static_file
 import bottle
 import os
-import argparse
+import logging
 import begin
 
 
@@ -51,6 +51,7 @@ def error404(error):
 
 
 @begin.start(auto_convert=True)
+@begin.logging
 def main(host: 'Host' = 'localhost', port: 'Port' = '8080'):
     """ Basic Bottle App with begins module. """
     bottle.run(app, host=host, port=port, debug=True)
