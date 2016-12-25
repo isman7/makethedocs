@@ -2,20 +2,15 @@ from bottle import Bottle, template, static_file
 import bottle
 import os
 import argparse
+import begin
 
-
-# Looking for arguments "-H" for host and "-p" for port. argparse deals with "-h" help argument automatically.
-parser = argparse.ArgumentParser()
-parser.add_argument('-H', help='Server. I. e. \'localhost\'', default='localhost')
-parser.add_argument('-p', help='Port. I. e. \'8080\'', default='8080')
-args = parser.parse_args()
 
 # Creating a Bottle app instance.
 app = Bottle()
 
 # Using os module to know were the server is running.
 abspath = os.path.abspath(".")
-print "The absolute path to server program is: {}".format(abspath)
+print("The absolute path to server program is: {}".format(abspath))
 
 # Bottle Functions start here
 
@@ -30,14 +25,14 @@ def server_static(path):
     return static_file(path, root='/'.join([abspath, 'static']))
 
 
-@app.route('/empty/')
-def index(host="http://{}:{}".format(args.H, args.p)):
-    return template('starter', host=host)
-
-
-@app.route('/home/')
-def index(host="http://{}:{}".format(args.H, args.p)):
-    return template('index', host=host)
+# @app.route('/empty/')
+# def index(host="http://{}:{}".format(args.H, args.p)):
+#     return template('starter', host=host)
+#
+#
+# @app.route('/home/')
+# def index(host="http://{}:{}".format(args.H, args.p)):
+#     return template('index', host=host)
 
 
 @app.route('/pid/')
@@ -54,7 +49,10 @@ def pid():
 def error404(error):
     return 'Nothing here, sorry'
 
-if __name__ == "__main__":
 
-    bottle.run(app, host=args.H, port=args.p, debug=True)
+@begin.start(auto_convert=True)
+def main(host: 'Host' = 'localhost', port: 'Port' = '8080'):
+    """ Basic Bottle App with begins module. """
+    bottle.run(app, host=host, port=port, debug=True)
+
 
