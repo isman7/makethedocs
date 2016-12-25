@@ -35,15 +35,6 @@ def server_static(path):
 #     return template('index', host=host)
 
 
-@app.route('/pid/')
-def pid():
-    """
-    Auxiliar function that reports the PID of the subprocess running
-    the Bottle server in order to kill it if necessary.
-    :return: a plain htlm page with the PID
-    """
-    return str(os.getpid())
-
 
 @app.error(404)
 def error404(error):
