@@ -11,28 +11,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{{host}}/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url}}/static/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{host}}/static/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{url}}/static/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{host}}/static/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{url}}/static/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{host}}/static/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url}}/static/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{host}}/static/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url}}/static/dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{host}}/static/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="{{url}}/static/plugins/iCheck/flat/blue.css">
   <!-- Morris chart -->
-  <link rel="stylesheet" href="{{host}}/static/plugins/morris/morris.css">
+  <link rel="stylesheet" href="{{url}}/static/plugins/morris/morris.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="{{host}}/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="{{url}}/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Date Picker -->
-  <link rel="stylesheet" href="{{host}}/static/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="{{url}}/static/plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{host}}/static/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{url}}/static/plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{host}}/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="{{url}}/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
 </head>
 <!--
@@ -94,7 +94,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="{{host}}/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="{{url}}/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -178,14 +178,14 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{host}}/static/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{url}}/static/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{host}}/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{url}}/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -235,7 +235,7 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{host}}/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{url}}/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -395,11 +395,11 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{{host}}/static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="{{url}}/static/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{host}}/static/js/bootstrap.min.js"></script>
+<script src="{{url}}/static/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{host}}/static/dist/js/app.min.js"></script>
+<script src="{{url}}/static/dist/js/app.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

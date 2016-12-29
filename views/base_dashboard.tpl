@@ -62,7 +62,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{url('home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -245,9 +245,9 @@ desired effect
       </div>
 
       <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
+      <form action="{{url('search')}}" method="post" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="s" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -265,25 +265,7 @@ desired effect
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Your Page Content Here -->
-
-    </section>
-    <!-- /.content -->
+    {{!page}}
   </div>
   <!-- /.content-wrapper -->
 
@@ -413,8 +395,8 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{url('static', filepath='dist/js/app.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{url('static', filepath='dist/js/pages/dashboard.js')}}"></script>
+<!--<script src="{{url('static', filepath='dist/js/pages/dashboard.js')}}"></script>-->
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('static', filepath='dist/js/demo.js')}}"></script>
+<!--<script src="{{url('static', filepath='dist/js/demo.js')}}"></script>-->
 </body>
 </html>
