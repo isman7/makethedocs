@@ -27,13 +27,12 @@ class dashboard(Bottle):
                 "sidebar_menu": self.main_menu.render(url=url, **kwargs),
                 "page": self.pages.get(page, dashboard_page()).render()}
 
-    def page_to_menu(self, **kwargs):
+    def register_page(self, **kwargs):
         page = self.pages.get(kwargs.get("page_name"))
+        menu = kwargs.get("menu", self.main_menu)
         logging.info(page)
-        self.main_menu.put(page.name, page)
-        return self.main_menu
-
-
+        menu.put(page.name, page)
+        return menu
 
 
 class dashboard_page(object):
@@ -122,7 +121,9 @@ def search():
 @board.route('/search', name='search', method='POST')
 @view('base_dashboard')
 def search():
-    # do search stuff
+    """
+    Do search stuff. In this example the query is rendered as plain text inside the page.
+    """
     search_string = request.forms.get("s")
     search_page = board.pages.get("search_page", dashboard_page(url="search"))
     search_page.content = search_string
@@ -153,8 +154,8 @@ def main(host: 'Host' = 'localhost', port: 'Port' = '10010'):
                                                   name="search",
                                                   title="Search"))
 
-    board.page_to_menu(page_name="home")
-    board.page_to_menu(page_name="social")
+    board.register_page(page_name="home")
+    board.register_page(page_name="social")
 
     """ Basic Bottle App with begins module. """
     bottle.run(board, host=host, port=port, debug=True)
