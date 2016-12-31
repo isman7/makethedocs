@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{title}} | {{description}}</title>
+  <title>AdminLTE 2 | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -64,9 +64,9 @@ desired effect
     <!-- Logo -->
     <a href="{{url('home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>{{title.split('.')[0][0]}}</b>{{title.split('.')[1][0:2]}}</span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>{{title.split('.')[0]}}</b>{{title.split('.')[1]}}</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
 
     <!-- Header Navbar -->
@@ -92,16 +92,16 @@ desired effect
     <section class="sidebar">
 
       <!-- Sidebar user panel (optional) -->
-      <!--<div class="user-panel">-->
-        <!--<div class="pull-left image">-->
-          <!--<img src="{{url('static', filepath='dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">-->
-        <!--</div>-->
-        <!--<div class="pull-left info">-->
-          <!--<p>Alexander Pierce</p>-->
-          <!--&lt;!&ndash; Status &ndash;&gt;-->
-          <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
-        <!--</div>-->
-      <!--</div>-->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{url('static', filepath='dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <!-- Status -->
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
 
       <!-- search form (Optional) -->
       <form action="{{url('search')}}" method="post" class="sidebar-form">
@@ -253,6 +253,76 @@ desired effect
 <script src="{{url('static', filepath='plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('static', filepath='dist/js/app.min.js')}}"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="{{url('static', filepath='plugins/chartjs/Chart.min.js')}}"></script>
+<script>
+(function(){
+"use strict";
+function ՐՏ_Iterable(iterable) {
+    var tmp;
+    if (iterable.constructor === [].constructor || iterable.constructor === "".constructor || (tmp = Array.prototype.slice.call(iterable)).length) {
+        return tmp || iterable;
+    }
+    return Object.keys(iterable);
+}
+
+(function(){
+
+    var __name__ = "__main__";
+
+    var pieChartCanvas, pieChart, PieData, pieOptions;
+    pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+    pieChart = new Chart(pieChartCanvas);
+    PieData = [ {
+        "value": 1e3,
+        "color": "#f56954",
+        "highlight": "#f56954",
+        "label": "Chrome"
+    }, {
+        "value": 500,
+        "color": "#00a65a",
+        "highlight": "#00a65a",
+        "label": "IE"
+    }, {
+        "value": 400,
+        "color": "#f39c12",
+        "highlight": "#f39c12",
+        "label": "FireFox"
+    }, {
+        "value": 600,
+        "color": "#00c0ef",
+        "highlight": "#00c0ef",
+        "label": "Safari"
+    }, {
+        "value": 300,
+        "color": "#3c8dbc",
+        "highlight": "#3c8dbc",
+        "label": "Opera"
+    }, {
+        "value": 100,
+        "color": "#d2d6de",
+        "highlight": "#d2d6de",
+        "label": "Navigator"
+    } ];
+    pieOptions = {
+        "segmentShowStroke": true,
+        "segmentStrokeColor": "#fff",
+        "segmentStrokeWidth": 2,
+        "percentageInnerCutout": 50,
+        "animationSteps": 100,
+        "animationEasing": "easeOutBounce",
+        "animateRotate": true,
+        "animateScale": false,
+        "responsive": true,
+        "maintainAspectRatio": true,
+        "legendTemplate": '\n<ul class="<%=name.toLowerCase()%>-legend">\n    <% for (var i=0; i<segments.length; i++){%>\n    <li>\n    <span style="background-color:<%=segments[i].fillColor%>"></span>\n    <%if(segments[i].label){%><%=segments[i].label%><%}%>\n    </li><%}%>\n</ul>\n'
+    };
+    pieChart.Doughnut(PieData, pieOptions);
+})();
+})();
+
+
+</script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{url('static', filepath='dist/js/pages/dashboard.js')}}"></script>-->
 <!-- AdminLTE for demo purposes -->

@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from bottle import Bottle, static_file, view, request
 from dashboard import Dashboard, page
 import bottle
@@ -41,6 +42,11 @@ def facebook():
 def search():
     return board.render_dict(page="search_page")
 
+@board.route('/chart', name='chart')
+@view('dashboard_test_chartjs')
+def chart():
+    return board.render_dict(page="chart")
+
 
 @board.route('/search', name='search', method='POST')
 @view('dashboard')
@@ -62,7 +68,7 @@ def error404(error):
 
 @begin.start(auto_convert=True)
 @begin.logging
-def main(host: 'Host' = 'localhost', port: 'Port' = '10010'):
+def main(host='localhost', port='10010'):
 
     board.pages.put("home", page(url="home",
                                  icon="fa fa-home",
@@ -78,8 +84,32 @@ def main(host: 'Host' = 'localhost', port: 'Port' = '10010'):
                                         name="search",
                                         title="Search"))
 
+    board.pages.put("chart", page(url="chart",
+                                    icon="fa fa-pie-chart",
+                                    name="chart",
+                                    title="ChartJS"))
+
     board.register_page(page_name="home")
     board.register_page(page_name="social")
+    board.register_page(page_name="chart")
+
+    board.pages.get("chart").content = """
+<div class="box box-danger">
+    <div class="box-header with-border">
+      <h3 class="box-title">Donut Chart</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <canvas id="pieChart" style="height:250px"></canvas>
+    </div>
+    <!-- /.box-body -->
+</div>
+    """
 
     bottle.run(board, host=host, port=port, debug=True)
 
