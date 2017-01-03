@@ -78,147 +78,6 @@ desired effect
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the messages -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="{{url('static', filepath='dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-                      </div>
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-                <!-- /.menu -->
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- /.messages-menu -->
-
-          <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks Menu -->
-          <li class="dropdown tasks-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- Inner menu: contains the tasks -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <!-- Task title and progress text -->
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <!-- The progress bar -->
-                      <div class="progress xs">
-                        <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="{{url('static', filepath='dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="{{url('static', filepath='dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
@@ -394,6 +253,76 @@ desired effect
 <script src="{{url('static', filepath='plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('static', filepath='dist/js/app.min.js')}}"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="{{url('static', filepath='plugins/chartjs/Chart.min.js')}}"></script>
+<script>
+(function(){
+"use strict";
+function ՐՏ_Iterable(iterable) {
+    var tmp;
+    if (iterable.constructor === [].constructor || iterable.constructor === "".constructor || (tmp = Array.prototype.slice.call(iterable)).length) {
+        return tmp || iterable;
+    }
+    return Object.keys(iterable);
+}
+
+(function(){
+
+    var __name__ = "__main__";
+
+    var pieChartCanvas, pieChart, PieData, pieOptions;
+    pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+    pieChart = new Chart(pieChartCanvas);
+    PieData = [ {
+        "value": 1e3,
+        "color": "#f56954",
+        "highlight": "#f56954",
+        "label": "Chrome"
+    }, {
+        "value": 500,
+        "color": "#00a65a",
+        "highlight": "#00a65a",
+        "label": "IE"
+    }, {
+        "value": 400,
+        "color": "#f39c12",
+        "highlight": "#f39c12",
+        "label": "FireFox"
+    }, {
+        "value": 600,
+        "color": "#00c0ef",
+        "highlight": "#00c0ef",
+        "label": "Safari"
+    }, {
+        "value": 300,
+        "color": "#3c8dbc",
+        "highlight": "#3c8dbc",
+        "label": "Opera"
+    }, {
+        "value": 100,
+        "color": "#d2d6de",
+        "highlight": "#d2d6de",
+        "label": "Navigator"
+    } ];
+    pieOptions = {
+        "segmentShowStroke": true,
+        "segmentStrokeColor": "#fff",
+        "segmentStrokeWidth": 2,
+        "percentageInnerCutout": 50,
+        "animationSteps": 100,
+        "animationEasing": "easeOutBounce",
+        "animateRotate": true,
+        "animateScale": false,
+        "responsive": true,
+        "maintainAspectRatio": true,
+        "legendTemplate": '\n<ul class="<%=name.toLowerCase()%>-legend">\n    <% for (var i=0; i<segments.length; i++){%>\n    <li>\n    <span style="background-color:<%=segments[i].fillColor%>"></span>\n    <%if(segments[i].label){%><%=segments[i].label%><%}%>\n    </li><%}%>\n</ul>\n'
+    };
+    pieChart.Doughnut(PieData, pieOptions);
+})();
+})();
+
+
+</script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--<script src="{{url('static', filepath='dist/js/pages/dashboard.js')}}"></script>-->
 <!-- AdminLTE for demo purposes -->
