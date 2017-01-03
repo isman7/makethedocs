@@ -1,4 +1,5 @@
 from bottle import Bottle, template, static_file, url, route, error, view, request
+from bottle import SimpleTemplate, TEMPLATE_PATH
 from collections import OrderedDict
 import bottle
 import os
@@ -19,13 +20,34 @@ class dashboard(Bottle):
         super(dashboard, self).__init__(*args, **kwargs)
 
     def render_dict(self, **kwargs):
-        page = kwargs.get("page", None)
+        page = kwargs.pop("page", None)
+        if page and not issubclass(page.__class__, dashboard_page):
+            page = self.pages.get(page, dashboard_page())
         url = kwargs.pop("url", self.get_url)
+
+        tpl = page.name
+        adapter = kwargs.pop('template_adapter', SimpleTemplate)
+        lookup = kwargs.pop('template_lookup', TEMPLATE_PATH)
+        tplid = (id(lookup), tpl)
+        if tplid not in TEMPLATES or DEBUG:
+            settings = kwargs.pop('template_settings', {})
+            if isinstance(tpl, adapter):
+                TEMPLATES[tplid] = tpl
+                if settings: TEMPLATES[tplid].prepare(**settings)
+            elif "\n" in tpl or "{" in tpl or "%" in tpl or '$' in tpl:
+                TEMPLATES[tplid] = adapter(source=tpl, lookup=lookup, **settings)
+            else:
+                TEMPLATES[tplid] = adapter(name=tpl, lookup=lookup, **settings)
+        if not TEMPLATES[tplid]:
+            abort(500, 'Template (%s) not found' % tpl)
+        for dictarg in args[1:]: kwargs.update(dictarg)
+        return TEMPLATES[tplid].render(kwargs)
+
         return {"url": url,
                 "color": self.board_config.get("layout", "color"),
                 "layout_options": self.board_config.get("layout", "options"),
-                "sidebar_menu": self.main_menu.render(url=url, **kwargs),
-                "page": self.pages.get(page, dashboard_page()).render()}
+                "sidebar_menu": self.main_menu.render(url=url, page=page.name),
+                "page": page.render()}
 
     def page_to_menu(self, **kwargs):
         page = self.pages.get(kwargs.get("page_name"))
@@ -46,8 +68,8 @@ class dashboard_page(object):
         self.url = kwargs.pop("url", "#")
         self.content = kwargs.pop("content", "The content")
 
-    def render(self):
-        return template("page",
+    def render(self, tpl="page"):
+        return template(tpl,
                         title=self.title,
                         description=self.description,
                         page_content=self.content)
@@ -131,8 +153,15 @@ def search():
 
 
 @board.error(404)
+@view('base_dashboard')
 def error404(error):
-    return 'Nothing here, sorry'
+    error_path = request.url
+    logging.info(error_path)
+    error_page = dashboard_page(name="404",
+                                title="Error 400",
+                                description="",
+                                content=error_path)
+    return board.render_dict(page=error_page)
 
 
 @begin.start(auto_convert=True)
